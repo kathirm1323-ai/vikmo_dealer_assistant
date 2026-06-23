@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VIKMO Dealer Assistant — AI-powered automotive parts catalogue assistant for dealers. Search parts, check stock, and place orders.">
+    <title>VIKMO — Dealer Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css?v=5">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="main-nav">
+        <div class="nav-left">
+            <div class="nav-brand">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <filter id="navTyreShadow" x="-10%" y="-10%" width="120%" height="120%">
+                            <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#000" flood-opacity="0.8"/>
+                        </filter>
+                        <linearGradient id="navTyreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#3a3a3a"/>
+                            <stop offset="50%" stop-color="#1f1f1f"/>
+                            <stop offset="100%" stop-color="#0a0a0a"/>
+                        </linearGradient>
+                        <linearGradient id="navRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#E0E0E0"/>
+                            <stop offset="50%" stop-color="#999999"/>
+                            <stop offset="100%" stop-color="#444444"/>
+                        </linearGradient>
+                        <linearGradient id="navRedAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#F44336"/>
+                            <stop offset="100%" stop-color="#B71C1C"/>
+                        </linearGradient>
+
+                        <!-- Base Tyre -->
+                        <circle cx="50" cy="50" r="45" fill="url(#navTyreGrad)" filter="url(#navTyreShadow)"/>
+                        
+                        <!-- Treads -->
+                        <path d="M 50 5 L 53 12 L 47 12 Z" fill="#050505"/>
+                        <path d="M 50 95 L 53 88 L 47 88 Z" fill="#050505"/>
+                        <path d="M 5 50 L 12 47 L 12 53 Z" fill="#050505"/>
+                        <path d="M 95 50 L 88 47 L 88 53 Z" fill="#050505"/>
+                        <path d="M 18.18 18.18 L 24 22 L 20 26 Z" fill="#050505"/>
+                        <path d="M 81.82 81.82 L 76 78 L 80 74 Z" fill="#050505"/>
+                        <path d="M 81.82 18.18 L 80 26 L 76 22 Z" fill="#050505"/>
+                        <path d="M 18.18 81.82 L 20 74 L 24 78 Z" fill="#050505"/>
+
+                        <!-- Inner Tyre Wall -->
+                        <circle cx="50" cy="50" r="33" fill="#151515" stroke="#222" stroke-width="2"/>
+
+                        <!-- Alloy Rim Outer Lip -->
+                        <circle cx="50" cy="50" r="28" fill="none" stroke="url(#navRimGrad)" stroke-width="4"/>
+
+                        <!-- Red Caliper peeking through -->
+                        <path d="M 68 35 Q 73 50 68 65 Q 64 50 68 35 Z" fill="url(#navRedAccent)"/>
+
+                        <!-- 5 Spokes (Star Pattern) -->
+                        <g stroke="#d8d8d8" stroke-width="6" stroke-linecap="round">
+                            <line x1="50" y1="50" x2="50" y2="22"/>
+                            <line x1="50" y1="50" x2="76" y2="40"/>
+                            <line x1="50" y1="50" x2="66" y2="72"/>
+                            <line x1="50" y1="50" x2="34" y2="72"/>
+                            <line x1="50" y1="50" x2="24" y2="40"/>
+                        </g>
+
+                        <!-- Center Hub -->
+                        <circle cx="50" cy="50" r="8" fill="url(#navRimGrad)"/>
+                        <circle cx="50" cy="50" r="3" fill="url(#navRedAccent)"/>
+                    </svg>
+                </div>
+                <div class="brand-info">
+                    <span class="brand-text">VIK<span class="brand-accent">MO</span></span>
+                    <span class="brand-tagline">Dealer Assistant</span>
+                </div>
+            </div>
+        </div>
+        <div class="nav-actions">
+        </div>
+    </nav>
+
+    <!-- Main Layout -->
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-inner">
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+                        Supported Brands
+                    </h3>
+                    <div class="brand-chips">
+                        <span class="chip" onclick="window.sendMessage('Show me parts for Bajaj')">Bajaj</span>
+                        <span class="chip" onclick="window.sendMessage('Show me parts for Honda')">Honda</span>
+                        <span class="chip" onclick="window.sendMessage('Show me parts for TVS')">TVS</span>
+                        <span class="chip" onclick="window.sendMessage('Show me parts for Royal Enfield')">Royal Enfield</span>
+                        <span class="chip" onclick="window.sendMessage('Show me parts for Hero')">Hero</span>
+                        <span class="chip" onclick="window.sendMessage('Show me parts for KTM')">KTM</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-section">
+                    <h3 class="sidebar-title">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        Categories
+                    </h3>
+                    <div class="category-list">
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Brake Pads & Parts category')">Brake Pads & Parts</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Chain & Sprocket category')">Chain & Sprocket</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Filters category')">Filters</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Clutch category')">Clutch</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Tyres category')">Tyres</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Lighting category')">Lighting</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Electrical category')">Electrical</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Engine category')">Engine</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Controls category')">Controls</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Body Parts category')">Body Parts</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Suspension category')">Suspension</span>
+                        <span class="category-item" onclick="window.sendMessage('Show me parts in the Exhaust category')">Exhaust</span>
+                    </div>
+                </div>
+            </div>
+
+        </aside>
+
+        <!-- Sidebar Overlay (mobile) -->
+        <div class="sidebar-overlay" id="sidebar-overlay"></div>
+
+        <!-- Chat Area -->
+        <main class="chat-main">
+            <div class="chat-messages" id="chat-messages">
+                <!-- Welcome Message -->
+                <div class="welcome-screen" id="welcome-screen">
+                    <div class="welcome-glow"></div>
+                    <div class="welcome-icon">
+                        <svg width="72" height="72" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <filter id="welcomeTyreShadow" x="-10%" y="-10%" width="120%" height="120%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#000" flood-opacity="0.8"/>
+                            </filter>
+                            <linearGradient id="welcomeTyreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3a3a3a"/>
+                                <stop offset="50%" stop-color="#1f1f1f"/>
+                                <stop offset="100%" stop-color="#0a0a0a"/>
+                            </linearGradient>
+                            <linearGradient id="welcomeRimGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#E0E0E0"/>
+                                <stop offset="50%" stop-color="#999999"/>
+                                <stop offset="100%" stop-color="#444444"/>
+                            </linearGradient>
+                            <linearGradient id="welcomeRedAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#F44336"/>
+                                <stop offset="100%" stop-color="#B71C1C"/>
+                            </linearGradient>
+
+                            <!-- Base Tyre -->
+                            <circle cx="50" cy="50" r="45" fill="url(#welcomeTyreGrad)" filter="url(#welcomeTyreShadow)"/>
+                            
+                            <!-- Treads -->
+                            <path d="M 50 5 L 53 12 L 47 12 Z" fill="#050505"/>
+                            <path d="M 50 95 L 53 88 L 47 88 Z" fill="#050505"/>
+                            <path d="M 5 50 L 12 47 L 12 53 Z" fill="#050505"/>
+                            <path d="M 95 50 L 88 47 L 88 53 Z" fill="#050505"/>
+                            <path d="M 18.18 18.18 L 24 22 L 20 26 Z" fill="#050505"/>
+                            <path d="M 81.82 81.82 L 76 78 L 80 74 Z" fill="#050505"/>
+                            <path d="M 81.82 18.18 L 80 26 L 76 22 Z" fill="#050505"/>
+                            <path d="M 18.18 81.82 L 20 74 L 24 78 Z" fill="#050505"/>
+
+                            <!-- Inner Tyre Wall -->
+                            <circle cx="50" cy="50" r="33" fill="#151515" stroke="#222" stroke-width="2"/>
+
+                            <!-- Alloy Rim Outer Lip -->
+                            <circle cx="50" cy="50" r="28" fill="none" stroke="url(#welcomeRimGrad)" stroke-width="4"/>
+
+                            <!-- Red Caliper peeking through -->
+                            <path d="M 68 35 Q 73 50 68 65 Q 64 50 68 35 Z" fill="url(#welcomeRedAccent)"/>
+
+                            <!-- 5 Spokes -->
+                            <g stroke="#d8d8d8" stroke-width="6" stroke-linecap="round">
+                                <line x1="50" y1="50" x2="50" y2="22"/>
+                                <line x1="50" y1="50" x2="76" y2="40"/>
+                                <line x1="50" y1="50" x2="66" y2="72"/>
+                                <line x1="50" y1="50" x2="34" y2="72"/>
+                                <line x1="50" y1="50" x2="24" y2="40"/>
+                            </g>
+
+                            <!-- Center Hub -->
+                            <circle cx="50" cy="50" r="8" fill="url(#welcomeRimGrad)"/>
+                            <circle cx="50" cy="50" r="3" fill="url(#welcomeRedAccent)"/>
+                        </svg>
+                    </div>
+                    <h1 class="welcome-title">Welcome to <span class="accent">VIKMO</span></h1>
+                    <p class="welcome-subtitle"><span class="typing-text">Your AI-powered Dealer Assistant for automotive parts</span></p>
+                    <div class="welcome-cards">
+                        <div class="welcome-card" data-prompt="Show me brake pads for Bajaj Pulsar 150" title="Click to search for Brake Pads" onclick="window.sendMessage(this.getAttribute('data-prompt'))">
+                            <span class="wc-icon">🔍</span>
+                            <div class="wc-content">
+                                <span class="wc-label">Search Parts</span>
+                                <span class="wc-text">Brake pads for Pulsar 150</span>
+                            </div>
+                            <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+                        <div class="welcome-card" data-prompt="Check stock for SKU001" title="Click to check stock" onclick="window.sendMessage(this.getAttribute('data-prompt'))">
+                            <span class="wc-icon">📦</span>
+                            <div class="wc-content">
+                                <span class="wc-label">Stock Check</span>
+                                <span class="wc-text">Check stock for SKU001</span>
+                            </div>
+                            <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+                        <div class="welcome-card" data-prompt="What parts are available for Royal Enfield Classic 350 2023?" title="Click to view fitment" onclick="window.sendMessage(this.getAttribute('data-prompt'))">
+                            <span class="wc-icon">🏍️</span>
+                            <div class="wc-content">
+                                <span class="wc-label">Vehicle Fitment</span>
+                                <span class="wc-text">Parts for Classic 350</span>
+                            </div>
+                            <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+                        <div class="welcome-card" data-prompt="I want to place an order for brake pads and engine oil" title="Click to start order" onclick="window.sendMessage(this.getAttribute('data-prompt'))">
+                            <span class="wc-icon">🛒</span>
+                            <div class="wc-content">
+                                <span class="wc-label">Place Order</span>
+                                <span class="wc-text">Create a new order</span>
+                            </div>
+                            <svg class="wc-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                        </div>
+                    </div>
+                    <div class="suggested-starters">
+                        <span class="welcome-card starter-chip" data-prompt="Brake pads for Pulsar 150?" onclick="window.sendMessage(this.getAttribute('data-prompt'))">Brake pads for Pulsar 150?</span>
+                        <span class="welcome-card starter-chip" data-prompt="Check stock for BRK-001" onclick="window.sendMessage(this.getAttribute('data-prompt'))">Check stock for BRK-001</span>
+                        <span class="welcome-card starter-chip" data-prompt="Find parts for Royal Enfield" onclick="window.sendMessage(this.getAttribute('data-prompt'))">Find parts for Royal Enfield</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Input Area -->
+            <div class="chat-input-area" id="chat-input-area">
+                <div class="input-wrapper">
+                    <textarea
+                        id="message-input"
+                        placeholder="Ask about parts, check stock, or place an order..."
+                        rows="1"
+                        maxlength="2000"
+                    ></textarea>
+                    <span class="input-hint-text">Press Enter to send</span>
+                    <button class="send-btn" id="btn-send" title="Send message">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"/>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="/static/app.js?v=3"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+# Core
+langchain>=0.3.0
+langchain-groq>=0.2.0
+langchain-community>=0.3.0
+langchain-huggingface>=0.1.0
+
+# Vector Store
+chromadb>=0.5.0
+
+# Embeddings
+sentence-transformers>=3.0.0
+
+# Data
+pandas>=2.0.0
+pydantic>=2.0.0
+
+# API Server
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+python-dotenv>=1.0.0
+
+# Forecasting (Bonus)
+prophet>=1.1.0
+matplotlib>=3.8.0
+scikit-learn>=1.4.0
+
+# Evaluation
+tqdm>=4.66.0

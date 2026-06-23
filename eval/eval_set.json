@@ -1,0 +1,202 @@
+[
+  {
+    "id": "TC001",
+    "category": "product_search",
+    "input": "I need brake pads for Bajaj Pulsar 150",
+    "expected_behavior": "Should retrieve brake pads compatible with Bajaj Pulsar 150 from the catalogue",
+    "expected_tool": null,
+    "expected_contains": ["brake pad", "Pulsar 150", "BRK-1002"]
+  },
+  {
+    "id": "TC002",
+    "category": "product_search",
+    "input": "Show me engine oil options",
+    "expected_behavior": "Should retrieve engine oil products from catalogue",
+    "expected_tool": null,
+    "expected_contains": ["engine oil", "Castrol", "Universal"]
+  },
+  {
+    "id": "TC003",
+    "category": "product_search",
+    "input": "Do you have chain sprocket kits?",
+    "expected_behavior": "Should retrieve chain and sprocket products",
+    "expected_tool": null,
+    "expected_contains": ["chain", "sprocket"]
+  },
+  {
+    "id": "TC004",
+    "category": "product_search",
+    "input": "I want air filters for Honda Activa",
+    "expected_behavior": "Should retrieve air filter products compatible with Honda Activa",
+    "expected_tool": null,
+    "expected_contains": ["air filter", "Activa"]
+  },
+  {
+    "id": "TC005",
+    "category": "product_search",
+    "input": "What tyres do you have for Royal Enfield Classic 350?",
+    "expected_behavior": "Should retrieve tyre products compatible with Royal Enfield Classic 350",
+    "expected_tool": null,
+    "expected_contains": ["tyre", "Classic 350"]
+  },
+  {
+    "id": "TC006",
+    "category": "vehicle_fitment",
+    "input": "What parts are available for Honda Activa 6G 2022?",
+    "expected_behavior": "Should call find_parts_by_vehicle tool with make=Honda, model=Activa 6G, year=2022",
+    "expected_tool": "find_parts_by_vehicle",
+    "expected_contains": ["Honda", "Activa"]
+  },
+  {
+    "id": "TC007",
+    "category": "vehicle_fitment",
+    "input": "Show me all parts for KTM Duke 200 2020",
+    "expected_behavior": "Should call find_parts_by_vehicle and return KTM Duke 200 compatible parts",
+    "expected_tool": "find_parts_by_vehicle",
+    "expected_contains": ["KTM", "Duke 200"]
+  },
+  {
+    "id": "TC008",
+    "category": "vehicle_fitment",
+    "input": "I have a Hero Splendor Plus 2019. What parts can I get?",
+    "expected_behavior": "Should identify vehicle and call find_parts_by_vehicle",
+    "expected_tool": "find_parts_by_vehicle",
+    "expected_contains": ["Hero", "Splendor"]
+  },
+  {
+    "id": "TC009",
+    "category": "vehicle_fitment",
+    "input": "Parts for TVS Apache RTR 160 2021",
+    "expected_behavior": "Should retrieve parts compatible with TVS Apache RTR 160",
+    "expected_tool": "find_parts_by_vehicle",
+    "expected_contains": ["TVS", "Apache"]
+  },
+  {
+    "id": "TC010",
+    "category": "stock_check",
+    "input": "Check stock for BRK-1002",
+    "expected_behavior": "Should call check_stock tool with sku=BRK-1002 and return stock info",
+    "expected_tool": "check_stock",
+    "expected_contains": ["BRK-1002", "stock", "Brake Pad"]
+  },
+  {
+    "id": "TC011",
+    "category": "stock_check",
+    "input": "Is FIL-1016 available? How many units?",
+    "expected_behavior": "Should call check_stock for FIL-1016 and show availability",
+    "expected_tool": "check_stock",
+    "expected_contains": ["FIL-1016", "stock"]
+  },
+  {
+    "id": "TC012",
+    "category": "stock_check",
+    "input": "What is the stock status of SKU999?",
+    "expected_behavior": "Should call check_stock and report that SKU999 is not found",
+    "expected_tool": "check_stock",
+    "expected_contains": ["not found"]
+  },
+  {
+    "id": "TC013",
+    "category": "order_creation",
+    "input": "Place an order for dealer Sharma Motors: 2 units of BRK-1002 and 3 units of FIL-1016",
+    "expected_behavior": "Should call create_order with dealer=Sharma Motors and two line items",
+    "expected_tool": "create_order",
+    "expected_contains": ["order", "confirmed", "Sharma Motors"]
+  },
+  {
+    "id": "TC014",
+    "category": "order_creation",
+    "input": "Create an order for Patel Auto Parts: 1 unit of GRP-1040",
+    "expected_behavior": "Should call create_order with the specified line items",
+    "expected_tool": "create_order",
+    "expected_contains": ["order", "confirmed", "Patel"]
+  },
+  {
+    "id": "TC015",
+    "category": "order_creation",
+    "input": "Order for ABC Dealer: 5000 units of ELE-1051",
+    "expected_behavior": "Should fail due to insufficient stock (only 0 units available)",
+    "expected_tool": "create_order",
+    "expected_contains": ["insufficient", "stock"]
+  },
+  {
+    "id": "TC016",
+    "category": "ambiguous",
+    "input": "I need brake pads",
+    "expected_behavior": "Should ask for clarification — which vehicle make, model, and year",
+    "expected_tool": null,
+    "expected_contains": ["which", "vehicle"]
+  },
+  {
+    "id": "TC017",
+    "category": "ambiguous",
+    "input": "I need parts",
+    "expected_behavior": "Should ask what type of parts and for which vehicle",
+    "expected_tool": null,
+    "expected_contains": ["which", "what"]
+  },
+  {
+    "id": "TC018",
+    "category": "ambiguous",
+    "input": "Check stock",
+    "expected_behavior": "Should ask for the specific SKU code to check",
+    "expected_tool": null,
+    "expected_contains": ["SKU", "which"]
+  },
+  {
+    "id": "TC019",
+    "category": "out_of_scope",
+    "input": "What is the weather today?",
+    "expected_behavior": "Should politely decline and redirect to automotive parts assistance",
+    "expected_tool": null,
+    "expected_contains": ["automotive", "parts"]
+  },
+  {
+    "id": "TC020",
+    "category": "out_of_scope",
+    "input": "Can you write me a Python script?",
+    "expected_behavior": "Should politely decline and explain it only handles auto parts queries",
+    "expected_tool": null,
+    "expected_contains": ["automotive", "parts"]
+  },
+  {
+    "id": "TC021",
+    "category": "out_of_scope",
+    "input": "Tell me a joke",
+    "expected_behavior": "Should politely redirect to automotive parts assistance",
+    "expected_tool": null,
+    "expected_contains": ["parts", "assist"]
+  },
+  {
+    "id": "TC022",
+    "category": "product_search",
+    "input": "I need spark plugs for my Royal Enfield Classic 350",
+    "expected_behavior": "Should retrieve spark plug products compatible with Classic 350",
+    "expected_tool": null,
+    "expected_contains": ["spark plug", "Denso", "ELE-1065"]
+  },
+  {
+    "id": "TC023",
+    "category": "order_creation",
+    "input": "Order for dealer XYZ: 1 unit of SKU999",
+    "expected_behavior": "Should fail because SKU999 does not exist in catalogue",
+    "expected_tool": "create_order",
+    "expected_contains": ["not found"]
+  },
+  {
+    "id": "TC024",
+    "category": "product_search",
+    "input": "What LED headlights do you have?",
+    "expected_behavior": "Should retrieve LED lighting products from catalogue",
+    "expected_tool": null,
+    "expected_contains": ["LED", "headlight"]
+  },
+  {
+    "id": "TC025",
+    "category": "stock_check",
+    "input": "How many Castrol engine oil units are in stock? The SKU is OIL-1001",
+    "expected_behavior": "Should check stock for OIL-1001",
+    "expected_tool": "check_stock",
+    "expected_contains": ["OIL-1001", "stock", "10"]
+  }
+]
